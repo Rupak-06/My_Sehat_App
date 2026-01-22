@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../domain/entities/user_entity.dart';
 import '../providers/auth_provider.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -43,7 +42,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.05), blurRadius: 10)
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 10)
                 ],
               ),
               child: Column(
@@ -51,7 +51,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor:
-                        Theme.of(context).primaryColor.withOpacity(0.1),
+                        Theme.of(context).primaryColor.withValues(alpha: 0.1),
                     child: Icon(Icons.person,
                         size: 50, color: Theme.of(context).primaryColor),
                   ),
@@ -165,7 +165,7 @@ class _ProfileOptionTile extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
+                    color: color.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(icon, color: color),
@@ -179,7 +179,7 @@ class _ProfileOptionTile extends StatelessWidget {
                   ),
                 ),
                 Icon(Icons.arrow_forward_ios_rounded,
-                    size: 16, color: color.withOpacity(0.5)),
+                    size: 16, color: color.withValues(alpha: 0.5)),
               ],
             ),
           ),

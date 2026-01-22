@@ -111,7 +111,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     border: Border.all(color: Colors.grey[200]!),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.05),
+                        color: Colors.grey.withValues(alpha: 0.05),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -123,7 +123,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withValues(alpha: 0.1),
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(Icons.medication_outlined,
@@ -170,7 +170,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 4),
                         decoration: BoxDecoration(
-                          color: item['statusColor'].withOpacity(0.1),
+                          color: item['statusColor'].withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(

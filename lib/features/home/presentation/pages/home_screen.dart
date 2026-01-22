@@ -24,15 +24,15 @@ class HomeScreen extends ConsumerWidget {
               const SizedBox(height: 24),
               const _HeroSection(),
               const SizedBox(height: 24),
-              _SectionTitle(title: "Diagnostics Flow"),
+              const _SectionTitle(title: "Diagnostics Flow"),
               const SizedBox(height: 16),
               const _DiagnosticsRow(),
               const SizedBox(height: 24),
-              _SectionTitle(title: "Health Record"),
+              const _SectionTitle(title: "Health Record"),
               const SizedBox(height: 12),
               const _HealthRecordList(),
               const SizedBox(height: 24),
-              _SectionTitle(title: "Quick Actions"),
+              const _SectionTitle(title: "Quick Actions"),
               const SizedBox(height: 12),
               const _QuickActionsStrip(),
               const SizedBox(height: 20), // Bottom padding
@@ -87,7 +87,7 @@ class _HomeHeader extends StatelessWidget {
                 onTap: () => context.push('/profile'),
                 child: CircleAvatar(
                   backgroundColor:
-                      Theme.of(context).primaryColor.withOpacity(0.1),
+                      Theme.of(context).primaryColor.withValues(alpha: 0.1),
                   radius: 24,
                   child:
                       Icon(Icons.person, color: Theme.of(context).primaryColor),
@@ -148,15 +148,15 @@ class _HeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: color.withOpacity(0.1),
+      color: color.withValues(alpha: 0.1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
-        side: BorderSide(color: color.withOpacity(0.2)),
+        side: BorderSide(color: color.withValues(alpha: 0.2)),
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(24),
-        splashColor: color.withOpacity(0.2),
-        highlightColor: color.withOpacity(0.1),
+        splashColor: color.withValues(alpha: 0.2),
+        highlightColor: color.withValues(alpha: 0.1),
         onTap: onTap,
         child: Container(
           height: 160,
@@ -249,29 +249,9 @@ class _DiagnosticsItem extends StatelessWidget {
       children: [
         Material(
           color: Colors.white,
-          // borderRadius removed because it conflicts with shape potentially,
-          // or we can just use shape if we wanted border.
-          // But here specifically, I didn't set shape above, I set borderRadius.
-          // Wait, in previous turn I set:
-          // borderRadius: BorderRadius.circular(20),
-          // elevation: 2,
-          // In the code I read back:
-          // borderRadius: BorderRadius.circular(20),
-          // elevation: 2,
-          // There IS NO shape here. So why did I think there was?
-          // Ah, check the code again.
-          // _DiagnosticsItem ONLY has borderRadius, NO shape.
-          // So _DiagnosticsItem might NOT be the one crashing?
-          // The error log mentioned: _HeroCard and _HealthListTile.
-          // _DiagnosticsItem was NOT in the error log.
-          // I will leave _DiagnosticsItem alone if it only has borderRadius.
-          // Reviewing code:
-          // lines 249-253: borderRadius: BorderRadius.circular(20), elevation: 2. NO SHAPE.
-          // So this chunk is UNNECESSARY. I will skip this chunk.
-          // WAIT, verifying _HealthcareListTile which IS in error log.
           elevation: 2,
           borderRadius: BorderRadius.circular(20),
-          shadowColor: Colors.black.withOpacity(0.3),
+          shadowColor: Colors.black.withValues(alpha: 0.3),
           child: InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(20),
@@ -279,7 +259,6 @@ class _DiagnosticsItem extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                // decorations moved to Material to allow ripple
               ),
               child:
                   Icon(icon, size: 32, color: Theme.of(context).primaryColor),
@@ -361,7 +340,7 @@ class _HealthListTile extends StatelessWidget {
           leading: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
+              color: Colors.blue.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: Colors.blue),
@@ -387,18 +366,18 @@ class _QuickActionsStrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
           _QuickActionChip(
               label: "Journaling", icon: Icons.book, color: Colors.orange),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           _QuickActionChip(
               label: "Medicine Reminder",
               icon: Icons.alarm,
               color: Colors.purple),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           _QuickActionChip(
               label: "Steps", icon: Icons.directions_walk, color: Colors.red),
         ],
@@ -418,7 +397,7 @@ class _QuickActionChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: color.withOpacity(0.8),
+      color: color.withValues(alpha: 0.8),
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         onTap: () {}, // Placeholder for action

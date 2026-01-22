@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          _SectionHeader(title: "General"),
+          const _SectionHeader(title: "General"),
           _SettingsSwitchTile(
             title: "Dark Mode",
             subtitle: "Enable dark theme for the app",
@@ -50,7 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) => setState(() => _autoSyncEnabled = val),
           ),
           const SizedBox(height: 24),
-          _SectionHeader(title: "Notifications"),
+          const _SectionHeader(title: "Notifications"),
           _SettingsSwitchTile(
             title: "Push Notifications",
             subtitle: "Receive alerts for appointments and meds",
@@ -59,7 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) => setState(() => _notificationsEnabled = val),
           ),
           const SizedBox(height: 24),
-          _SectionHeader(title: "Privacy & Security"),
+          const _SectionHeader(title: "Privacy & Security"),
           _SettingsSwitchTile(
             title: "Biometric Login",
             subtitle: "Use fingerprint or face ID to login",
@@ -78,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           const SizedBox(height: 24),
-          _SectionHeader(title: "About"),
+          const _SectionHeader(title: "About"),
           _SettingsLinkTile(
             title: "Version",
             subtitle: "1.0.0",
@@ -136,7 +136,7 @@ class _SettingsSwitchTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -146,11 +146,11 @@ class _SettingsSwitchTile extends StatelessWidget {
         value: value,
         onChanged: onChanged,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        activeColor: Theme.of(context).primaryColor,
+        activeThumbColor: Theme.of(context).primaryColor,
         secondary: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(icon, color: Theme.of(context).primaryColor),

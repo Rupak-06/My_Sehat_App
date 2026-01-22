@@ -151,7 +151,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     leading: CircleAvatar(
-                      backgroundColor: notification['color'].withOpacity(0.1),
+                      backgroundColor:
+                          notification['color'].withValues(alpha: 0.1),
                       child: Icon(
                         notification['icon'],
                         color: notification['color'],
@@ -188,7 +189,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     tileColor: notification['isRead']
                         ? Colors.transparent
-                        : Colors.blue.withOpacity(0.05),
+                        : Colors.blue.withValues(alpha: 0.05),
                   ),
                 );
               },

@@ -182,7 +182,7 @@ class _ContactCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
           ),
         ],
@@ -191,7 +191,8 @@ class _ContactCard extends ConsumerWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         leading: CircleAvatar(
           radius: 28,
-          backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+          backgroundColor:
+              Theme.of(context).primaryColor.withValues(alpha: 0.1),
           child: Text(
             contact.name[0].toUpperCase(),
             style: GoogleFonts.outfit(

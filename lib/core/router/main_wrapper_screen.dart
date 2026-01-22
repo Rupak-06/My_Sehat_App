@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/emergency/presentation/widgets/sos_bottom_sheet.dart';
 
 class MainWrapperScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -15,11 +16,19 @@ class MainWrapperScreen extends StatefulWidget {
 
 class _MainWrapperScreenState extends State<MainWrapperScreen> {
   void _goBranch(int index) {
+    if (index == 2) {
+      // SOS Index
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => const SOSBottomSheet(),
+      );
+      return;
+    }
+
     widget.navigationShell.goBranch(
       index,
-      // A common pattern when switching branches is to support
-      // navigating to the initial location when tapping the item that is
-      // already active.
       initialLocation: index == widget.navigationShell.currentIndex,
     );
   }
@@ -30,20 +39,44 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
       body: widget.navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: widget.navigationShell.currentIndex,
-        destinations: const [
-          NavigationDestination(
+        destinations: [
+          const NavigationDestination(
               label: 'Home',
               icon: Icon(Icons.home_outlined),
               selectedIcon: Icon(Icons.home)),
-          NavigationDestination(label: 'Search', icon: Icon(Icons.search)),
+          const NavigationDestination(
+              label: 'Search', icon: Icon(Icons.search)),
           NavigationDestination(
-              label: 'SOS',
-              icon: Icon(Icons.sos, color: Colors.red)), // Highlighted SOS?
-          NavigationDestination(
+            label: '',
+            icon: Transform.translate(
+              offset: const Offset(0, 8),
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.red,
+                      blurRadius: 6,
+                      spreadRadius: 2,
+                    )
+                  ],
+                ),
+                child: const Icon(
+                  Icons.sos,
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
+            ),
+          ),
+          const NavigationDestination(
               label: 'Notifications',
               icon: Icon(Icons.notifications_outlined),
               selectedIcon: Icon(Icons.notifications)),
-          NavigationDestination(label: 'History', icon: Icon(Icons.history)),
+          const NavigationDestination(
+              label: 'History', icon: Icon(Icons.history)),
         ],
         onDestinationSelected: _goBranch,
       ),

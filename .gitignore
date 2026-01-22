@@ -31,6 +31,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/build/
+android/build/
 /coverage/
 
 # Symbolication related
@@ -51,3 +53,25 @@ build_log.txt
 .flutter-plugins
 .flutter-plugins-dependencies
 
+# Android secrets
+**/android/key.properties
+
+# iOS / macOS
+**/ios/.generated/
+**/macos/Flutter/ephemeral/
+
+# Windows
+**/windows/flutter/ephemeral/
+
+# Linux
+**/linux/flutter/ephemeral/
+
+# Web
+**/web/icons/Icon-192.png
+**/web/icons/Icon-512.png
+**/web/favicon.png
+
+# Environment variables
+.env
+.env.*
+!.env.example

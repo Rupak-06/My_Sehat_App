@@ -32,7 +32,8 @@ class AppInfoScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.1),
+                      color:
+                          Theme.of(context).primaryColor.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -73,7 +74,7 @@ class AppInfoScreen extends StatelessWidget {
             const SizedBox(height: 32),
 
             // About Section
-            _SectionTitle(title: "About MySehat"),
+            const _SectionTitle(title: "About MySehat"),
             const SizedBox(height: 12),
             _InfoCard(
               child: Text(
@@ -88,9 +89,9 @@ class AppInfoScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Key Features
-            _SectionTitle(title: "Key Features"),
+            const _SectionTitle(title: "Key Features"),
             const SizedBox(height: 12),
-            _InfoCard(
+            const _InfoCard(
               child: Column(
                 children: [
                   _FeatureItem(
@@ -99,35 +100,35 @@ class AppInfoScreen extends StatelessWidget {
                     description:
                         "Quick access to emergency contacts and services",
                   ),
-                  const Divider(height: 24),
+                  Divider(height: 24),
                   _FeatureItem(
                     icon: Icons.healing,
                     title: "Symptom Checker",
                     description:
                         "AI-powered symptom analysis and health recommendations",
                   ),
-                  const Divider(height: 24),
+                  Divider(height: 24),
                   _FeatureItem(
                     icon: Icons.psychology,
                     title: "Mental Health Support",
                     description:
                         "Track your mood and access mental wellness resources",
                   ),
-                  const Divider(height: 24),
+                  Divider(height: 24),
                   _FeatureItem(
                     icon: Icons.calendar_today,
                     title: "Doctor Appointments",
                     description:
                         "Schedule and manage your medical appointments",
                   ),
-                  const Divider(height: 24),
+                  Divider(height: 24),
                   _FeatureItem(
                     icon: Icons.history,
                     title: "Medical History",
                     description:
                         "Keep track of your health records and past consultations",
                   ),
-                  const Divider(height: 24),
+                  Divider(height: 24),
                   _FeatureItem(
                     icon: Icons.offline_bolt,
                     title: "Offline Access",
@@ -140,7 +141,7 @@ class AppInfoScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Privacy & Security
-            _SectionTitle(title: "Privacy & Security"),
+            const _SectionTitle(title: "Privacy & Security"),
             const SizedBox(height: 12),
             _InfoCard(
               child: Text(
@@ -155,9 +156,9 @@ class AppInfoScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Contact Information
-            _SectionTitle(title: "Contact & Support"),
+            const _SectionTitle(title: "Contact & Support"),
             const SizedBox(height: 12),
-            _InfoCard(
+            const _InfoCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -166,13 +167,13 @@ class AppInfoScreen extends StatelessWidget {
                     label: "Email",
                     value: "support@mysehat.com",
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   _ContactItem(
                     icon: Icons.phone,
                     label: "Phone",
                     value: "+91 1800-XXX-XXXX",
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   _ContactItem(
                     icon: Icons.language,
                     label: "Website",
@@ -184,15 +185,15 @@ class AppInfoScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Legal
-            _SectionTitle(title: "Legal"),
+            const _SectionTitle(title: "Legal"),
             const SizedBox(height: 12),
-            _InfoCard(
+            const _InfoCard(
               child: Column(
                 children: [
                   _LegalItem(title: "Terms of Service"),
-                  const Divider(height: 16),
+                  Divider(height: 16),
                   _LegalItem(title: "Privacy Policy"),
-                  const Divider(height: 16),
+                  Divider(height: 16),
                   _LegalItem(title: "Licenses"),
                 ],
               ),
@@ -248,7 +249,7 @@ class _InfoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -278,7 +279,7 @@ class _FeatureItem extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(
